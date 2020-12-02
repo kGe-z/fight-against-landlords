@@ -1,0 +1,52 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  /* background: url(../assets/image/timg2.jpg); */
+}
+
+li {
+  list-style: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex_w {
+  flex-grow: 1
+}
+
+.f_1 {
+  flex: 1;
+}
+
+.jc_sb {
+  justify-content: space-between;
+}
+
+.jc_sa {
+  justify-content: space-around;
+}
+
+.pt_40 {
+  padding-top: 40px;
+}
+
+.main_top {
+  height: 700px;
+  display: flex;
+}
+
+.relative {
+  position: relative;
+}
+
+.none {
+  display: none !important;
+}

@@ -1,0 +1,586 @@
+.bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(../assets/images/timg2.jpg);
+  filter: blur(1px);
+  z-index: -1;
+}
+
+.main {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+/* 左边 AI */
+.main_left {
+  width: 20%;
+  height: 700px;
+  position: absolute;
+  left: 0;
+  /* background: #000; */
+}
+
+/* 右边 AI */
+.main_right {
+  width: 20%;
+  height: 700px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* background: #c96a6a; */
+}
+
+/* 桌面 */
+.main_content_top {
+  width: 60%;
+  height: 700px;
+  /* background: #8bb48d; */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* 玩家 */
+.main_content_bottom {
+  width: 100vw;
+  height: calc(100vh - 700px);
+  /* background: #d14040; */
+}
+
+/* 牌组 */
+.cards {
+  width: 125px;
+  height: 175px;
+  position: relative;
+  /* background: blue; */
+}
+.cards li {
+  /* border: 1px solid #ebe7e7; */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+/* 提示 */
+.tip {
+  padding: 4px 8px;
+  /* width: 125px; */
+  height: 30px;
+  position: absolute;
+  background: #fcfcfc93;
+  text-align: center;
+  top: -70px;
+  left: 60%;
+  border-radius: 10px;
+  display: none;
+}
+
+/* 抢地主提示 */
+.qdz {
+  height: 30px;
+  position: absolute;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  display: none;
+  font-family: "华文行楷";
+  letter-spacing: 5px;
+  user-select: none;
+}
+.main_content_bottom .qdz {
+  top: -130px;
+  left: 50%;
+}
+.main_left .qdz {
+  right: -130px;
+  top: 40%;
+  transform: translateY(-50%);
+}
+.main_right .qdz {
+  left: -130px;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.user_wrap .chat {
+  position: absolute;
+  top: -150px;
+  right: 0;
+  max-width: 220px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #d4d1d1;
+  /* color: #fff; */
+  cursor: pointer;
+  display: none;
+}
+
+.user_wrap {
+  user-select: none;
+}
+
+.user_wrap .chat::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  bottom: -15px;
+  border-top: 8px solid #fff;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+/* 人物信息 */
+.user {
+  width: 170px;
+  color: #fff;
+}
+
+.avatar {
+  /* display: none; */
+  height: 170px;
+  position: relative;
+  border-radius: 50%;
+  border: 8px solid #ece9e9;
+}
+
+.avatar .dz {
+  position: absolute;
+  top: -48%;
+  display: none;
+}
+
+.main_right .avatar .dz {
+  top: -53%;
+  transform: translate(30px, 5px) rotateZ(30deg);
+}
+
+.avatar img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.user_info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -88px;
+  text-align: center;
+  /* color: #fff; */
+}
+
+.user_info .username {
+  /* color: #fff; */
+  font-size: 22px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.user_info .gold {
+  display: none;
+}
+
+.user_info .gold span {
+  /* color: #fff; */
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.user_info .integral {
+  font-size: 14px;
+}
+
+.main_content_bottom .user_wrap {
+  width: 30%;
+  /* float: right; */
+}
+
+.main_content_bottom .user {
+  /* float: right; */
+  /* margin-right: 40px; */
+  position: absolute;
+  top: -61px;
+  left: 300px;
+}
+.main_content_bottom .user .user_info {
+  bottom: -70px;
+}
+
+.main_content_bottom .cards {
+  flex: 1;
+}
+
+.main_bottom_bottom {
+  position: absolute;
+  top: -80px;
+  min-width: 240px;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 按钮 */
+.main_bottom_bottom .button {
+  width: 80px;
+  height: 35px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.button:hover {
+  background: #ece9e9;
+}
+.button:active {
+  background: #c5c5c5;
+}
+
+
+
+.go_play,
+.landlord {
+  display: none;
+  margin-left: 80px;
+}
+
+/* 时钟 */
+.clock_wrap {
+  position: absolute;
+  background: url(../assets/images/clock2.png) center/cover;
+  background-size: 100% 100%;
+  width: 50px;
+  height: 50px;
+  display: none;
+}
+.clock {
+  position: absolute;
+  font-size: 16px;
+  font-weight: bold;
+  /* color: #fff; */
+  background: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  user-select: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main_bottom_bottom .clock {
+  position: relative;
+  /* margin-right: 15px; */
+  /* left: 50px; */
+}
+
+.main_left .clock_wrap {
+  right: -40px;
+  top: 200px;
+}
+.main_right .clock_wrap {
+  left: -40px;
+  top: 200px;
+}
+
+/* 头像 */
+
+.rank_1 {
+  background: no-repeat url(../assets/images/ai_1.gif) center;
+  background-size: 100% 100%;
+}
+
+.rank_2 {
+  background: no-repeat url(../assets/images/player_2.gif) center;
+  background-size: 100% 100%;
+}
+
+.rank_3 {
+  background: no-repeat url(../assets/images/ai_2.gif) center;
+  background-size: 100% 100%;
+}
+
+/* 桌面 */
+.all_poker {
+  width: 100px;
+  height: 138px;
+  margin: 200px auto 0px;
+  position: relative;
+  transform-style: preserve-3d;
+  /* background: #000; */
+}
+
+.all_poker li {
+  position: absolute;
+  border-radius: 5px;
+  transform-origin: 50% 80%;
+}
+
+.back {
+  width: 100px;
+  height: 138px;
+  background: url(../assets/images/14.png) -100px -222px;
+  position: absolute;
+  /*z-index: 100;*/
+  box-shadow: 1px 1px 1px #487985;
+  cursor: pointer;
+}
+
+.play_2 {
+  position: relative;
+}
+
+.play_2 li {
+  position: absolute;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 地主三张牌 */
+.play_4_wrap {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+}
+.play_4 {
+  width: 340px;
+  height: 138px;
+  margin: 0 auto;
+  position: relative;
+  /* background: rgb(146, 55, 55); */
+}
+
+.play_4 li {
+  position: absolute;
+  border-radius: 5px;
+}
+
+/* 左边 玩家出牌位置 */
+.now_poker {
+  width: 100px;
+  height: 138px;
+  position: absolute;
+  /* background: #000; */
+}
+
+.now_poker li {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.now_poker_1 {
+  margin: -50px 0 0 0;
+  top: 250px;
+  left: 30px;
+}
+
+.now_poker_1 li {
+  position: absolute;
+  border-radius: 5px;
+}
+/* 中间 玩家出牌位置 */
+.now_poker_2 {
+  margin: 0 auto;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.now_poker_2 li {
+  position: absolute;
+  border-radius: 5px;
+}
+
+/* 右边 玩家出牌位置 */
+.now_poker_3 {
+  margin: -50px 0 0 0;
+  top: 250px;
+  right: 70px;
+}
+
+.now_poker_3 li {
+  position: absolute;
+  border-radius: 5px;
+}
+
+/* 我的积分 */
+.mine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  /* color: #fff; */
+  background: #ebe8e8;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.mine .integral {
+  width: 200px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 10px;
+  text-align: center;
+  background: #fff;
+  margin-left: 80px;
+}
+
+.mine .multiple {
+  flex: 1;
+  /* width: 200px; */
+  font-size: 22px;
+  text-align: center;
+}
+
+.mine .multiple span {
+  font-size: 28px;
+  color: #f32314;
+  font-weight: bold;
+}
+
+/* 聊天 */
+.mine .chat {
+  width: 80px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 10px;
+  margin-right: 80px;
+  padding: 0 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.mine .chat:active {
+  background: #d4d3d3;
+}
+
+.chat_hover {
+  position: absolute;
+  right: 20px;
+  /* height: 400px; */
+  width: 300px;
+  bottom: 60px;
+  background: rgb(252, 251, 251);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  overflow: auto;
+  cursor: pointer;
+  display: none;
+}
+
+.chat_hover .chat_item {
+  padding: 6px 10px 6px 4px;
+  font-size: 18px;
+  border-bottom: 1px solid #e7e0e0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.chat_hover .chat_item:hover {
+  background: #f3f1f1;
+}
+
+.chat_hover .chat_item:active {
+  background: #d3d2d2;
+}
+
+/* 选中 */
+.main_content_bottom .select {
+  top: -20px;
+}
+
+/* 结果 */
+.more_game {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+}
+
+.more_game .more_main {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 400px;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.more_game .more_main_top {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  margin-left: -250px;
+  width: 500px;
+  height: 80px;
+  background: #c05050;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 50px;
+  text-align: center;
+}
+
+.more_game .more_main_content {
+  padding-top: 100px;
+}
+
+.more_title {
+  height: 50px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.more_main_content {
+  font-size: 20px;
+}
+
+.more_item {
+  text-align: center;
+  height: 50px;
+}
+
+.player_name {
+  position: relative;
+}
+
+.player_boss {
+  position: absolute;
+  left: 80px;
+  top: 4px;
+}
+
+.again {
+  width: 150px;
+  height: 60px;
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background: #cc3c22;
+  color: #fff;
+  cursor: pointer;
+}
+
+.again:active {
+  background: #bd1717;
+}

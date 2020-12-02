@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/rest.css" />
+    <link rel="stylesheet" href="../style/双飞翼.css" />
+    <link rel="stylesheet" href="../font/font.css" />
+    <link rel="stylesheet" href="../style/animate.css" />
+    <script src="../javascript/jquery.min.js"></script>
+    <script src="../javascript/index.js"></script>
+    <script src="../javascript/public.js"></script>
+    <script src="../javascript/animation.js"></script>
+  </head>
+  <body>
+    <div class="bg"></div>
+    <!-- 主要内容区域 -->
+    <div class="main">
+      <!-- AI 玩家 （左） -->
+      <div class="main_left relative flex jc_sa pt_40">
+        <!-- 左边人物 -->
+        <div class="user">
+          <div class="avatar rank_1">
+            <img class="dz" src="../assets/images/dizhu.png" alt="" />
+            <!-- <img src="../assets/images/dz.jpg" alt="" /> -->
+            <div class="user_info">
+              <div class="username">玩家一</div>
+              <div class="name none">农民</div>
+              <div class="gold">还剩 <span>17</span> 张牌</div>
+              <div class="integral">积分：<span>1</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="qdz">抢地主</div>
+        <!-- 左边玩家 牌组 -->
+        <ul class="cards play_1"></ul>
+        <!-- 时钟 -->
+        <div class="clock_wrap">
+          <div class="clock">30</div>
+        </div>
+        <!-- <div class="clock">30</div> -->
+      </div>
+
+      <!-- 桌面 + 玩家牌组 -->
+      <div class="main_content">
+        <div class="main_content_top relative">
+          <!-- 存放游戏发牌中留下的三张底牌列表区域 -->
+          <div class="play_4_wrap">
+            <ul class="play_4"></ul>
+          </div>
+          <!-- 存放要一开始加载的一副牌的区域 -->
+          <ul class="all_poker"></ul>
+          <!--玩家 1 的出牌区域-->
+          <ul class="now_poker now_poker_1"></ul>
+          <!--玩家 2 的出牌区域-->
+          <ul class="now_poker now_poker_2"></ul>
+          <!--玩家 3 的出牌区域-->
+          <ul class="now_poker now_poker_3"></ul>
+        </div>
+        <!-- 玩家区域 -->
+        <div class="main_content_bottom relative flex">
+          <!-- 人物 -->
+          <div class="user_wrap relative">
+            <div class="user">
+              <div class="avatar rank_2">
+                <img class="dz" src="../assets/images/dizhu.png" alt="" />
+                <div class="user_info">
+                  <div class="username">玩家二</div>
+                  <div class="name none">农民</div>
+                  <div class="gold">还剩 <span>17</span> 张牌</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 聊天框 -->
+            <div class="chat">
+              <span>快点啊！我等到花儿都谢了</span>
+            </div>
+          </div>
+          <!-- 错误提示 -->
+          <div class="qdz">抢地主</div>
+          <div class="tip">出牌格式错误</div>
+          <!-- 中间 牌组 -->
+          <ul class="cards play_2"></ul>
+          <div style="width: 30%"></div>
+
+          <!-- 时钟 -->
+          <div class="main_bottom_bottom flex relative jc_sb">
+            <div class="clock_wrap">
+              <div class="clock">30</div>
+            </div>
+            <!-- 抢地主 -->
+            <div class="landlord">
+              <button class="button confirm" data-index="1">抢地主</button>
+              <button class="button cancel" data-index="0">不抢</button>
+            </div>
+
+            <!-- 出牌 -->
+            <div class="go_play">
+              <button class="button play">出牌</button>
+              <button class="button pass">不出</button>
+              <button class="button tips">提示</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI 玩家 （右） -->
+      <div class="main_right relative flex jc_sa pt_40">
+        <div class="qdz">抢地主</div>
+        <!-- 左边玩家 牌组 -->
+        <ul class="cards play_3"></ul>
+        <!-- 左边人物 -->
+        <div class="user">
+          <div class="avatar rank_3">
+            <!-- <img src="../assets/images/dz.jpg" alt="" /> -->
+            <img class="dz" src="../assets/images/dizhu.png" alt="" />
+            <div class="user_info">
+              <div class="username">玩家三</div>
+              <div class="name none">农民</div>
+              <div class="gold">还剩 <span>17</span> 张牌</div>
+              <div class="integral">积分：<span>1</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- 时钟 -->
+
+        <div class="clock_wrap">
+          <div class="clock">30</div>
+        </div>
+        <!-- <div class="clock">30</div> -->
+      </div>
+
+      <!-- 积分器 -->
+      <div class="mine">
+        <div class="integral">积分： <span>0</span></div>
+        <div class="multiple">倍数 <span>x 1</span></div>
+
+        <div class="chat">
+          <i class="iconfont icon-liaotian"></i>
+          聊天
+        </div>
+      </div>
+      <!-- 再来一局 -->
+      <div class="more_game">
+        <div class="more_main">
+          <div class="more_main_top">
+            <div class="more_top_result">胜利</div>
+          </div>
+          <div class="more_main_content">
+            <!-- 标题 -->
+            <div class="more_title flex jc_sa">
+              <div class="title_name">昵称</div>
+              <div class="title_integral">总分</div>
+              <div class="title_result">结果</div>
+            </div>
+
+            <div class="result_list"></div>
+            <!-- 重来一局 -->
+            <button class="again" onclick="restart()">再来一局</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 聊天  -->
+    <div class="chat_hover">
+      <div class="chat_item">大哥，你会不会打牌啊！</div>
+      <div class="chat_item">快点啊，我等的花儿都谢了~</div>
+      <div class="chat_item">你的牌打的也太好了！</div>
+      <div class="chat_item">你是GG还是MM啊？</div>
+      <div class="chat_item">我就不信，十七张牌，你能秒我？</div>
+      <div class="chat_item">快给阿姨倒杯卡布奇诺。</div>
+      <div class="chat_item">你和地主是一家的吧？</div>
+    </div>
+
+    <!-- 顺子动画 -->
+    <div class="shunzi clearfix">
+      <img src="../assets/images/xingxing.png" alt="" />
+      <p><i class="web-font">顺子！咻~</i></p>
+      <p class="star">
+        <em><img src="../assets/images/xingxing_1.png" alt="" /></em>
+        <em><img src="../assets/images/xingxing_1.png" alt="" /></em>
+        <em><img src="../assets/images/xingxing_1.png" alt="" /></em>
+        <em><img src="../assets/images/xingxing_1.png" alt="" /></em>
+        <em><img src="../assets/images/xingxing_1.png" alt="" /></em>
+        <em><img src="../assets/images/xingxing_1.png" alt="" /></em>
+        <em><img src="../assets/images/xingxing_1.png" alt="" /></em>
+      </p>
+    </div>
+
+    <!-- 炸弹动画 -->
+    <div class="zhadan">
+      <p><i class="web-font">DUANG!!!</i></p>
+      <img src="../assets/images/星光.png" alt="" />
+      <img src="../assets/images/星光.png" alt="" />
+      <img src="../assets/images/星光.png" alt="" />
+      <img src="../assets/images/星光.png" alt="" />
+      <img src="../assets/images/星光.png" alt="" />
+      <img src="../assets/images/星光.png" alt="" />
+      <img src="../assets/images/星光.png" alt="" />
+      <img src="../assets/images/星光.png" alt="" />
+    </div>
+
+    <!-- 飞机动画 -->
+    <div class="fly">
+      <p><i class="web-font">看！呜...灰鸡！</i></p>
+    </div>
+
+    <!-- 连对动画 -->
+    <div class="liandui clearfix">
+      <p><i class="">哟</i></p>
+      <p><i class="">，</i></p>
+      <p><i class="">是</i></p>
+      <p><i class="">连</i></p>
+      <p><i class="">对</i></p>
+      <p><i class="">儿</i></p>
+      <p><i class="">~</i></p>
+    </div>
+
+    <!-- 音频 -->
+    <!-- 背景音乐 -->
+    <audio
+      id="bg_1"
+      autoplay
+      loop
+      src="../assets/sound/background/Normal.ogg"
+    ></audio>
+    <!-- 胜利背景音乐  -->
+    <audio id="winner_1" src="../assets/sound/background/Win.ogg"></audio>
+    <!-- 失败背景音乐  -->
+    <audio id="loser_1" src="../assets/sound/background/Lose.ogg"></audio>
+
+    <!-- 报单 -->
+    <audio id="baodan" src="../assets/sound/man/报单.mp3"></audio>
+    <audio id="baodan_play" src="../assets/sound/woman/common/报单.wav"></audio>
+    <!-- 报双 -->
+    <audio id="baoshuang" src="../assets/sound/man/报双.mp3"></audio>
+    <audio
+      id="baoshuang_play"
+      src="../assets/sound/woman/common/报双.wav"
+    ></audio>
+    <!--	洗牌音效          -->
+    <audio id="xp" loop src="../assets/sound/common/洗牌.mp3"></audio>
+    <!--	发牌音效          -->
+    <audio id="fp" src="../assets/sound/common/发牌.ogg"></audio>
+    <!--	抢地主音效          -->
+    <audio id="qdz_yes" src="../assets/sound/common/抢地主0.ogg"></audio>
+    <audio
+      id="qdz_yes_play"
+      src="../assets/sound/woman/common/抢地主1.wav"
+    ></audio>
+    <!--	不抢地主音效          -->
+    <audio id="qdz_no" src="../assets/sound/common/不抢.ogg"></audio>
+    <audio id="qdz_no_play" src="../assets/sound/woman/common/不抢.wav"></audio>
+    <!--	出牌音效          -->
+    <audio id="cp_yes" src="../assets/sound/common/出牌声.ogg"></audio>
+    <!--	不出牌音效          -->
+    <audio id="cp_no" src="../assets/sound/common/buyao2.ogg"></audio>
+    <audio id="cp_no_play" src="../assets/sound/woman/common/不要.wav"></audio>
+
+    <!-- ai	单牌音效  -->
+    <audio id="dan_1" src="../assets/sound/poker/单牌/1.ogg"></audio>
+    <audio id="dan_2" src="../assets/sound/poker/单牌/2.ogg"></audio>
+    <audio id="dan_3" src="../assets/sound/poker/单牌/3.ogg"></audio>
+    <audio id="dan_4" src="../assets/sound/poker/单牌/4.ogg"></audio>
+    <audio id="dan_5" src="../assets/sound/poker/单牌/5.ogg"></audio>
+    <audio id="dan_6" src="../assets/sound/poker/单牌/6.ogg"></audio>
+    <audio id="dan_7" src="../assets/sound/poker/单牌/7.ogg"></audio>
+    <audio id="dan_8" src="../assets/sound/poker/单牌/8.ogg"></audio>
+    <audio id="dan_9" src="../assets/sound/poker/单牌/9.ogg"></audio>
+    <audio id="dan_10" src="../assets/sound/poker/单牌/10.ogg"></audio>
+    <audio id="dan_11" src="../assets/sound/poker/单牌/11.ogg"></audio>
+    <audio id="dan_12" src="../assets/sound/poker/单牌/12.ogg"></audio>
+    <audio id="dan_13" src="../assets/sound/poker/单牌/13.ogg"></audio>
+    <audio id="dan_14" src="../assets/sound/poker/单牌/14.ogg"></audio>
+    <audio id="dan_15" src="../assets/sound/poker/单牌/15.ogg"></audio>
+
+    <!-- 玩家 单牌音效 -->
+    <audio id="dan_play_1" src="../assets/sound/woman/单牌/1.wav"></audio>
+    <audio id="dan_play_2" src="../assets/sound/woman/单牌/2.wav"></audio>
+    <audio id="dan_play_3" src="../assets/sound/woman/单牌/3.wav"></audio>
+    <audio id="dan_play_4" src="../assets/sound/woman/单牌/4.wav"></audio>
+    <audio id="dan_play_5" src="../assets/sound/woman/单牌/5.wav"></audio>
+    <audio id="dan_play_6" src="../assets/sound/woman/单牌/6.wav"></audio>
+    <audio id="dan_play_7" src="../assets/sound/woman/单牌/7.wav"></audio>
+    <audio id="dan_play_8" src="../assets/sound/woman/单牌/8.wav"></audio>
+    <audio id="dan_play_9" src="../assets/sound/woman/单牌/9.wav"></audio>
+    <audio id="dan_play_10" src="../assets/sound/woman/单牌/10.wav"></audio>
+    <audio id="dan_play_11" src="../assets/sound/woman/单牌/11.wav"></audio>
+    <audio id="dan_play_12" src="../assets/sound/woman/单牌/12.wav"></audio>
+    <audio id="dan_play_13" src="../assets/sound/woman/单牌/13.wav"></audio>
+    <audio id="dan_play_14" src="../assets/sound/woman/单牌/14.wav"></audio>
+    <audio id="dan_play_15" src="../assets/sound/woman/单牌/15.wav"></audio>
+
+    <!-- ai	对子音效  -->
+    <audio id="dui_1" src="../assets/sound/poker/对子/1.ogg"></audio>
+    <audio id="dui_2" src="../assets/sound/poker/对子/2.ogg"></audio>
+    <audio id="dui_3" src="../assets/sound/poker/对子/3.ogg"></audio>
+    <audio id="dui_4" src="../assets/sound/poker/对子/4.ogg"></audio>
+    <audio id="dui_5" src="../assets/sound/poker/对子/5.ogg"></audio>
+    <audio id="dui_6" src="../assets/sound/poker/对子/6.ogg"></audio>
+    <audio id="dui_7" src="../assets/sound/poker/对子/7.ogg"></audio>
+    <audio id="dui_8" src="../assets/sound/poker/对子/8.ogg"></audio>
+    <audio id="dui_9" src="../assets/sound/poker/对子/9.ogg"></audio>
+    <audio id="dui_10" src="../assets/sound/poker/对子/10.ogg"></audio>
+    <audio id="dui_11" src="../assets/sound/poker/对子/11.ogg"></audio>
+    <audio id="dui_12" src="../assets/sound/poker/对子/12.ogg"></audio>
+    <audio id="dui_13" src="../assets/sound/poker/对子/13.ogg"></audio>
+
+    <!-- 玩家	对子音效  -->
+    <audio id="dui_play_1" src="../assets/sound/woman/对子/1.wav"></audio>
+    <audio id="dui_play_2" src="../assets/sound/woman/对子/2.wav"></audio>
+    <audio id="dui_play_3" src="../assets/sound/woman/对子/3.wav"></audio>
+    <audio id="dui_play_4" src="../assets/sound/woman/对子/4.wav"></audio>
+    <audio id="dui_play_5" src="../assets/sound/woman/对子/5.wav"></audio>
+    <audio id="dui_play_6" src="../assets/sound/woman/对子/6.wav"></audio>
+    <audio id="dui_play_7" src="../assets/sound/woman/对子/7.wav"></audio>
+    <audio id="dui_play_8" src="../assets/sound/woman/对子/8.wav"></audio>
+    <audio id="dui_play_9" src="../assets/sound/woman/对子/9.wav"></audio>
+    <audio id="dui_play_10" src="../assets/sound/woman/对子/10.wav"></audio>
+    <audio id="dui_play_11" src="../assets/sound/woman/对子/11.wav"></audio>
+    <audio id="dui_play_12" src="../assets/sound/woman/对子/12.wav"></audio>
+    <audio id="dui_play_13" src="../assets/sound/woman/对子/13.wav"></audio>
+
+    <!-- ai 对压音效 -->
+    <audio id="duiya_1" src="../assets/sound/poker/对压/1.ogg"></audio>
+    <audio id="duiya_2" src="../assets/sound/poker/对压/2.ogg"></audio>
+    <audio id="duiya_3" src="../assets/sound/poker/对压/3.ogg"></audio>
+
+    <!-- 玩家 对压音效 -->
+    <audio id="duiya_play_1" src="../assets/sound/woman/对压/1.wav"></audio>
+    <audio id="duiya_play_2" src="../assets/sound/woman/对压/2.wav"></audio>
+    <audio id="duiya_play_3" src="../assets/sound/woman/对压/3.wav"></audio>
+
+    <!-- 连对音效 -->
+    <audio id="liandui_1" src="../assets/sound/poker/连对/liandui.ogg"></audio>
+    <audio
+      id="liandui_1_play"
+      src="../assets/sound/woman/连对/liandui.wav"
+    ></audio>
+    <!-- 飞机音效 -->
+    <audio id="feiji_1" src="../assets/sound/poker/飞机/feiji.ogg"></audio>
+    <audio id="feiji_1_play" src="../assets/sound/woman/飞机/feiji.wav"></audio>
+    <!-- 顺子音效 -->
+    <audio id="shunzi_1" src="../assets/sound/poker/顺子/shunzi.ogg"></audio>
+    <audio
+      id="shunzi_1_play"
+      src="../assets/sound/woman/顺子/shunzi.wav"
+    ></audio>
+
+    <!-- 3 带 1 音效 -->
+    <audio
+      id="san_one_music"
+      src="../assets/sound/poker/带子/sandaiyi.ogg"
+    ></audio>
+    <audio
+      id="san_one_music_paly"
+      src="../assets/sound/woman/带子/sandaiyi.wav"
+    ></audio>
+    <!-- 3 带 2 音效 -->
+    <audio
+      id="san_two_music"
+      src="../assets/sound/poker/带子/sandaier.ogg"
+    ></audio>
+    <audio
+      id="san_two_music_paly"
+      src="../assets/sound/woman/带子/sandaiyidui.wav"
+    ></audio>
+    <!-- 4 带 2 音效 -->
+    <audio
+      id="si_one_music"
+      src="../assets/sound/poker/带子/sidaier.ogg"
+    ></audio>
+    <audio
+      id="si_one_music_paly"
+      src="../assets/sound/woman/带子/sidaier.wav"
+    ></audio>
+    <!-- 4 带 两对 音效 -->
+    <audio
+      id="si_two_music"
+      src="../assets/sound/poker/带子/sidailiangdui.ogg"
+    ></audio>
+    <audio
+      id="si_two_music_paly"
+      src="../assets/sound/woman/带子/sidailiangdui.wav"
+    ></audio>
+
+    <!-- 炸弹 + 王炸 -->
+    <audio id="zhadan_1" src="../assets/sound/poker/炸弹/zhadan.ogg"></audio>
+    <audio id="wangzha_1" src="../assets/sound/poker/炸弹/wangzha.ogg"></audio>
+    <audio
+      id="zhadan_1_play"
+      src="../assets/sound/woman/炸弹/zhadan.wav"
+    ></audio>
+    <audio
+      id="wangzha_1_play"
+      src="../assets/sound/woman/炸弹/wangzha.wav"
+    ></audio>
+
+    <!-- 玩家聊天音效 -->
+    <audio
+      id="chat_1"
+      src="../assets/sound/chat/大哥，你会不会打牌啊.m4a"
+    ></audio>
+    <audio
+      id="chat_2"
+      src="../assets/sound/chat/快点啊，我等的花儿都谢了.m4a"
+    ></audio>
+    <audio
+      id="chat_3"
+      src="../assets/sound/chat/你的牌打的也太好了.m4a"
+    ></audio>
+    <audio id="chat_4" src="../assets/sound/chat/你是gg还是mm.m4a"></audio>
+    <audio
+      id="chat_5"
+      src="../assets/sound/chat/我就不信，十七张牌，你能秒我.m4a"
+    ></audio>
+    <audio
+      id="chat_6"
+      src="../assets/sound/chat/给阿姨倒杯卡布奇诺.m4a"
+    ></audio>
+    <audio
+      id="chat_7"
+      src="../assets/sound/chat/你和地主是一家的吧？.m4a"
+    ></audio>
+
+    <script src="../javascript/sound.js"></script>
+  </body>
+</html>
